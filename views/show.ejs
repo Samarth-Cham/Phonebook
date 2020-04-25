@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Phonebook</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body style="background-color: black;">
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
+    <li class="nav-item">
+      <button style="background-color: #454d55;"><b><a style="font-size: 23px;color: white;"  class="nav-link" href="/show">Home</a></b></button>
+    </li>
+    <li class="nav-item">
+      <button style="background-color: #454d55;"><b><a style="font-size: 23px;color:white;"  class="nav-link" href="/create">Create</a></b></button>
+    </li>
+</nav>
+
+  <table class="table table-hover table-dark">
+    <thead>
+      <tr>
+        
+        <th scope="col">Name</th>
+        <th scope="col">Address</th>
+        <th scope="col">Landline</th>
+        <th scope="col">Cell_phone_no</th>
+        <th scope="col">Work_phone_no</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+        <% Data.forEach((el)=>{ %>
+      <tr>
+
+        <td><%= el.Name %> </td>
+        <td><%= el.Address %> </td>
+        <td><%= el.Landline %> </td>
+        <td><%= el.Cell_phone_no %> </td>
+        <td><%= el.Work_phone_no %> </td>
+        <td><img style="border-radius:50%;width: 50px;height: 50px;" src="/uploads/<%= el.Img_Source %>" >
+        </td>
+        <td>
+            <form method="GET" action="/edit_data/<%=el._id %>">
+                <button class="btn btn-primary" style="margin-top: 10px;">
+                    Update
+                </button>
+            </form>
+        </td>
+        <td>
+            <form method="POST" action="/delete_data/<%=el._id %>?_method=DELETE">
+                <button class="btn btn-danger" style="margin-top: 10px;">
+                    Delete :(
+                </button>
+            </form>
+        </td>
+      </tr>
+      
+   
+   
+      <% }) %>
+      
+    </tbody>
+  </table>
+</body> 
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
